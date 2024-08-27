@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+	<title data-th-text="${loggedInUser.name}+' |  SCM'">Profile Page</title>
+  </head>
+  <body>
+	
+	<div id="content" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 animate-gradient-xy p-6">
+	  <div class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+	    <div class="text-center mb-6">
+	      <div class="flex items-center justify-center">
+	        <span class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-600 text-blue-600 dark:text-blue-100">
+	          <i class="fas fa-robot text-4xl"></i> <!-- Robot/Chatbot icon -->
+	        </span>
+	      </div>
+		  <div th:if="${loggedInUser}">
+		  	         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+		  	       </div>
+	      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-4">Ask the AI</h2>
+	      <p class="text-gray-600 dark:text-gray-400">Get answers to your questions instantly.</p>
+	    </div>
+
+	    <div id="chat-box" class="mb-4 h-80 overflow-y-auto bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+	      <!-- Example of AI and user responses -->
+	      <div class="mb-2">
+	        <div class="flex items-start">
+	          <span class="inline-block w-10 h-10 mr-2 bg-blue-200 dark:bg-blue-500 rounded-full">
+	            <i class="fas fa-robot text-lg text-blue-600 dark:text-white"></i>
+	          </span>
+	          <div class="bg-blue-100 dark:bg-blue-600 text-blue-900 dark:text-white p-3 rounded-lg">
+	            <p>Hello! How can I assist you today?</p>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="mb-2 text-right">
+	        <div class="flex justify-end">
+	          <div class="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white p-3 rounded-lg inline-block">
+	            <p>What is Java?</p>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="flex">
+	      <input id="user-input" type="text" class="w-full p-3 rounded-l-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Type your question...">
+	      <button id="send-btn" class="p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-r-lg flex items-center justify-center">
+	        <i class="fas fa-paper-plane text-lg"></i> <!-- Send icon -->
+	      </button>
+	    </div>
+	  </div>
+	</div>
+
+	<style>
+	  @keyframes gradient-xy {
+	    0% {
+	      background-position: 0% 50%;
+	    }
+	    50% {
+	      background-position: 100% 50%;
+	    }
+	    100% {
+	      background-position: 0% 50%;
+	    }
+	  }
+	  .animate-gradient-xy {
+	    background-size: 200% 200%;
+	    animation: gradient-xy 10s ease infinite;
+	  }
+	</style>
+
+
+	
+	
+    <script>
+      console.log("this is bot page");
+    </script>
+  </body>
+</html>

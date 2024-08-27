@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+	<title data-th-text="${loggedInUser.name}+' |  SCM'">Profile Page</title>
+  </head>
+  <body>
+    <div id="content">
+		
+		<!-- sidebar -->
+
+				        <!-- user is logged in : sidebar -->
+
+		
+		<div th:if="${loggedInUser}">
+		         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+		       </div>
+
+			
+	<div class="sm:pl-64 pt-15" style="height: 1000px">
+		<div class="flex items-center justify-center md:pt-32 flex-col">
+     
+  <!--
+   <h1 class="text-5xl">Welcome <span data-th-text="${loggedInUser.name}"></span></h1>
+   <p>This is Profile Page</p>
+   
+   
+   The profile card now!!
+   -->
+   
+   <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-2xl w-full">
+	<!-- Welcome message -->
+	            <div class="text-center mb-10">
+	                <h1 class="text-5xl font-bold text-gray-800 dark:text-white">
+	                    Welcome, <span data-th-text="${loggedInUser.name}"></span>!
+	                </h1>
+	                <p class="text-lg text-gray-600 dark:text-gray-300">
+	                    This is your profile page. Here's a summary of your account.
+	                </p>
+	            </div>
+				<!-- Profile Card -->
+				<div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-4xl mx-auto mt-10">
+				    <div class="flex items-center space-x-6">
+				        <!-- Profile Picture -->
+				        <div class="flex-shrink-0">
+				            <img 
+				                onerror="this.onerror=null; this.src='https://www.kindpng.com/picc/m/459-4595992_business-user-account-png-image-blue-link-icon.png'"
+				                data-th-src="@{${loggedInUser.profilePic}}" 
+				                class="w-32 h-32 rounded-full shadow-lg object-cover"
+				                alt="Profile Picture">
+				        </div>
+
+				        <!-- User Information -->
+				        <div class="flex-grow">
+				            <h2 class="text-xl text-gray-700 dark:text-gray-300 mb-2">
+				                Name: <span th:text="${loggedInUser.name}" class="font-medium"></span>
+				            </h2>
+				            <p class="text-xl text-gray-700 dark:text-gray-300 mb-2">
+				                Email: <span th:text="${loggedInUser.email}" class="font-medium">user.email@example.com</span>
+				            </p>
+				            <p class="text-lg text-gray-500 dark:text-gray-400 mb-4">
+				                Phone: <span th:text="${loggedInUser.phoneNumber}" class="font-medium">123-456-7890</span>
+				            </p>
+				            <p class="text-gray-600 dark:text-gray-300 text-base">
+				                About: <span th:text="${loggedInUser.about}" class="font-medium">About the user...</span>
+				            </p>
+				        </div>
+				    </div>
+
+				    <!-- Verification Status -->
+				    <div class="mt-6 grid grid-cols-2 gap-6">
+				        <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm flex flex-col items-center">
+				            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Email Verified</p>
+				            <p class="text-lg font-semibold text-gray-900 dark:text-white" id="email-verified" 
+				               data-th-text="${loggedInUser.emailVerified ? 'YES' : 'NO'}">
+				               <span th:text="${loggedInUser.emailVerified ? 'YES' : 'NO'}" 
+				                     class="text-lg ${loggedInUser.emailVerified ? 'text-green-500' : 'text-red-500'}">
+				                   ${loggedInUser.emailVerified ? 'YES' : 'NO'}
+				               </span>
+				            </p>
+				        </div>
+				        <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm flex flex-col items-center">
+				            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Phone Verified</p>
+				            <p class="text-lg font-semibold text-gray-900 dark:text-white" id="phone-verified" 
+				               data-th-text="${loggedInUser.phoneVerified ? 'YES' : 'NO'}">
+				               <span th:text="${loggedInUser.phoneVerified ? 'YES' : 'NO'}" 
+				                     class="text-lg ${loggedInUser.phoneVerified ? 'text-green-500' : 'text-red-500'}">
+				                   ${loggedInUser.phoneVerified ? 'YES' : 'NO'}
+				               </span>
+				            </p>
+				        </div>
+				    </div>
+
+				    <!-- Profile Actions -->
+				    <div class="mt-8 flex justify-end space-x-4">
+				        <a data-th-href="@{/user/settings}" 
+				           class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-3 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800 transition duration-150 ease-in-out">
+				            Edit Profile
+				        </a>
+				        <a data-th-href="@{/do-logout}" 
+				           class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-6 py-3 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800 transition duration-150 ease-in-out">
+				            Log Out
+				        </a>
+				    </div>
+				</div>
+
+
+	
+	
+    <script>
+      console.log("this is profile page");
+    </script>
+  </body>
+</html>

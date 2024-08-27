@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+	<title data-th-text="${loggedInUser.name}+' |  SCM'">Profile Page</title>
+	
+	<style>
+	        /* Simple CSS for styling */
+	        body {
+	            font-family: Arial, sans-serif;
+	            margin: 0;
+	            padding: 20px;
+	            background-color: #f4f4f4;
+	        }
+	        .container {
+	            max-width: 600px;
+	            margin: auto;
+	            padding: 20px;
+	            background-color: #fff;
+	            border-radius: 5px;
+	            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	        }
+	        input, textarea, button {
+	            width: 100%;
+	            padding: 10px;
+	            margin: 10px 0;
+	        }
+	        button {
+	            background-color: #28a745;
+	            color: #fff;
+	            border: none;
+	            cursor: pointer;
+	        }
+	        button:hover {
+	            background-color: #218838;
+	        }
+	        .status {
+	            margin-top: 20px;
+	        }
+	    </style>
+  </head>
+  <body>
+    <div id="content">
+		
+		<!-- sidebar -->
+
+				        <!-- user is logged in : sidebar -->
+
+		
+		<div th:if="${loggedInUser}">
+		         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+		       </div>
+
+			
+			   <div class="container">
+			       <h2>Send Email</h2>
+			       <form id="emailForm">
+			           <label for="recipient">Recipient Email:</label>
+			           <input type="email" id="recipient" name="recipient" required>
+
+			           <label for="subject">Subject:</label>
+			           <input type="text" id="subject" name="subject" required>
+
+			           <label for="msgBody">Message Body:</label>
+			           <textarea id="msgBody" name="msgBody" rows="4" required></textarea>
+
+			           <label for="attachment">Attachment:</label>
+			           <input type="file" id="attachment" name="attachment">
+
+			           <button type="submit">Send Email</button>
+			       </form>
+
+			       <div class="status" id="status"></div>
+			   </div>
+     
+  <!--
+   <h1 class="text-5xl">Welcome <span data-th-text="${loggedInUser.name}"></span></h1>
+   <p>This is Profile Page</p>
+   
+   
+   The profile card now!!
+   -->
+   
+  
+   <script>
+       document.getElementById('emailForm').addEventListener('submit', function(e) {
+           e.preventDefault();
+           sendEmail();
+       });
+
+       function sendEmail() {
+           const formData = new FormData();
+           formData.append('recipient', document.getElementById('recipient').value);
+           formData.append('subject', document.getElementById('subject').value);
+           formData.append('msgBody', document.getElementById('msgBody').value);
+           
+           const attachment = document.getElementById('attachment').files[0];
+           if (attachment) {
+               formData.append('attachment', attachment);
+           }
+
+           fetch('/sendMailWithAttachment', {
+               method: 'POST',
+               body: formData
+           })
+           .then(response => response.text())
+           .then(data => {
+               document.getElementById('status').textContent = data;
+           })
+           .catch(error => {
+               console.error('Error:', error);
+               document.getElementById('status').textContent = 'Failed to send email.';
+           });
+       }
+   </script>
+
+    </div>
+	
+	
+    <script>
+      console.log("this is profile page");
+    </script>
+  </body>
+</html>

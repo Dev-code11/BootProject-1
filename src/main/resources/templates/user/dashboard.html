@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html
+ lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+    <title data-th-text="${loggedInUser.name}+' |  Dashboard'">
+      Profile Page
+    </title>
+  </head>
+  <body>
+    <div id="content">
+      <!-- sidebar -->
+
+      <!-- user is logged in : sidebar -->
+
+      <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+      </div>
+
+	  <div class="sm:pl-64 pt-20 px-6 pb-10">
+	          <!-- Welcome Message -->
+	          <div class="flex justify-center flex-col items-center mb-10">
+	            <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">
+	              Welcome, <span data-th-text="${loggedInUser.name}"></span>!
+	            </h1>
+	            <p class="text-lg text-gray-600 dark:text-gray-400">
+	              Here's a quick overview of your account. 
+	            </p>
+				<p class="text-lg text-gray-600 dark:text-gray-400">
+				              Don't worry, this page is static. 
+				            </p>
+				
+	          </div>
+			  
+			  <!-- Statistics Cards -->
+			          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+			            <!-- Total Contacts -->
+			            <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-5">
+			              <div class="flex items-center">
+			                <div class="p-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-500">
+			                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+			                    <path d="M13 7H7v6h6V7z"></path>
+			                    <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zM7 7a2 2 0 011 1.732V11a2 2 0 01-1 1.732V7zM11 13a2 2 0 01-1-1.732V8.732A2 2 0 0111 7v6zM13 11a2 2 0 01-1 1.732V7A2 2 0 0113 11z" clip-rule="evenodd"></path>
+			                  </svg>
+			                </div>
+			                <div class="ml-4 text-gray-700 dark:text-gray-300">
+			                  <h3 class="text-lg font-semibold">Total Contacts</h3>
+			                  <p class="text-2xl font-bold">50</p>
+			                </div>
+			              </div>
+			            </div>
+						
+						<!-- Pending Invitations -->
+						          <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-5">
+						            <div class="flex items-center">
+						              <div class="p-3 rounded-full bg-green-100 dark:bg-green-900 text-green-500">
+						                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+						                  <path d="M16.707 7.293a1 1 0 00-1.414 0L9 13.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z"></path>
+						                </svg>
+						              </div>
+						              <div class="ml-4 text-gray-700 dark:text-gray-300">
+						                <h3 class="text-lg font-semibold">Pending Invitations</h3>
+						                <p class="text-2xl font-bold">14</p>
+						              </div>
+						            </div>
+						          </div>
+								  <!-- Recent Logins -->
+								           <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-5">
+								             <div class="flex items-center">
+								               <div class="p-3 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-500">
+								                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+								                   <path fill-rule="evenodd" d="M10 2a7 7 0 100 14 7 7 0 000-14zM8 8a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 110-2z" clip-rule="evenodd"></path>
+								                   <path fill-rule="evenodd" d="M8 9a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 110-2z" clip-rule="evenodd"></path>
+								                 </svg>
+								               </div>
+								               <div class="ml-4 text-gray-700 dark:text-gray-300">
+								                 <h3 class="text-lg font-semibold">Recent Logins</h3>
+								                 <p class="text-2xl font-bold">2</p>
+								               </div>
+								             </div>
+								           </div>
+								         </div>
+										 <!-- Recent Activity & Upcoming Events -->
+										         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+										           <!-- Recent Activity -->
+										           <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-5">
+										             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Recent Activity</h3>
+										             <ul class="space-y-4">
+										               <li class="flex items-center">
+										                 <div class="p-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-500">
+										                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+										                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v14a1 1 0 002 0V8h6v9a1 1 0 002 0V3a1 1 0 00-1-1H6z" clip-rule="evenodd"></path>
+										                   </svg>
+										                 </div>
+										                 <div class="ml-3 text-gray-700 dark:text-gray-300">
+										                   <p class="text-sm">You added <strong>John Doe</strong> to your contacts.</p>
+										                   <p class="text-xs text-gray-500 dark:text-gray-400">2 hours ago</p>
+										                 </div>
+										               </li>
+										               <li class="flex items-center">
+										                 <div class="p-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-500">
+										                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+										                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v14a1 1 0 002 0V8h6v9a1 1 0 002 0V3a1 1 0 00-1-1H6z" clip-rule="evenodd"></path>
+										                   </svg>
+										                 </div>
+										                 <div class="ml-3 text-gray-700 dark:text-gray-300">
+										                   <p class="text-sm">You sent an invitation to <strong>Jane Smith</strong>.</p>
+										                   <p class="text-xs text-gray-500 dark:text-gray-400">4 hours ago</p>
+										                 </div>
+										               </li>
+										               <li class="flex items-center">
+										                 <div class="p-2 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-500">
+										                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+										                     <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v14a1 1 0 002 0V8h6v9a1 1 0 002 0V3a1 1 0 00-1-1H6z" clip-rule="evenodd"></path>
+										                   </svg>
+										                 </div>
+										                 <div class="ml-3 text-gray-700 dark:text-gray-300">
+										                   <p class="text-sm">You logged in from a new device.</p>
+										                   <p class="text-xs text-gray-500 dark:text-gray-400">Yesterday</p>
+										                 </div>
+										               </li>
+										             </ul>
+										           </div>
+												   <!-- Upcoming Events -->
+												            <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-5">
+												              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Upcoming Events</h3>
+												              <ul class="space-y-4">
+												                <li class="flex items-center">
+												                  <div class="p-2 rounded-full bg-teal-100 dark:bg-teal-900 text-teal-500">
+												                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+												                      <path fill-rule="evenodd" d="M8 2a2 2 0 00-2 2v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2V4a2 2 0 00-2-2H8zM8 4h4v1H8V4zm-2 4h10v8H6V8z" clip-rule="evenodd"></path>
+												                    </svg>
+												                  </div>
+												                  <div class="ml-3 text-gray-700 dark:text-gray-300">
+												                    <p class="text-sm">Team meeting</p>
+												                    <p class="text-xs text-gray-500 dark:text-gray-400">Monday, 10:00 AM</p>
+												                  </div>
+												                </li>
+												                <li class="flex items-center">
+												                  <div class="p-2 rounded-full bg-teal-100 dark:bg-teal-900 text-teal-500">
+												                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+												                      <path fill-rule="evenodd" d="M8 2a2 2 0 00-2 2v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2V4a2 2 0 00-2-2H8zM8 4h4v1H8V4zm-2 4h10v8H6V8z" clip-rule="evenodd"></path>
+												                    </svg>
+												                  </div>
+												                  <div class="ml-3 text-gray-700 dark:text-gray-300">
+												                    <p class="text-sm">Webinar on Cloud Security</p>
+												                    <p class="text-xs text-gray-500 dark:text-gray-400">Wednesday, 2:00 PM</p>
+												                  </div>
+												                </li>
+												                <li class="flex items-center">
+												                  <div class="p-2 rounded-full bg-teal-100 dark:bg-teal-900 text-teal-500">
+												                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+												                      <path fill-rule="evenodd" d="M8 2a2 2 0 00-2 2v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2V4a2 2 0 00-2-2H8zM8 4h4v1H8V4zm-2 4h10v8H6V8z" clip-rule="evenodd"></path>
+												                    </svg>
+												                  </div>
+												                  <div class="ml-3 text-gray-700 dark:text-gray-300">
+												                    <p class="text-sm">Client presentation</p>
+												                    <p class="text-xs text-gray-500 dark:text-gray-400">Friday, 3:00 PM</p>
+												                  </div>
+												                </li>
+												              </ul>
+												            </div>
+												          </div>
+												        </div>
+			  
+    </div>
+
+    <script>
+      console.log("this is dashboard page");
+    </script>
+  </body>
+</html>

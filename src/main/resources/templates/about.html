@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+th:replace="~{base :: parent (~{::#content},~{::title},~{::script})}" 
+  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		
+		<title>About page (title)</title>
+	
+			
+		</head>
+		<body>
+		<div id="content">
+			<!---
+			<p>hai ye likha gya hai content id wale div k andar. </p>
+			<br>
+			<p>ye likha rha hu about.html file mai, but khulega ye base.html mai. </p>
+			-->
+			
+			<section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+			  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+			    <div class="mx-auto max-w-5xl text-center">
+			      <!-- Centered and bold heading -->
+			      <h2 class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl mb-8">Product Description</h2>
+			      
+			      <!-- Resized images -->
+			      <div class="my-8 xl:mb-16 xl:mt-12 flex justify-center">
+			        <img class="w-3/4 max-w-md dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-showcase.svg" alt="Product Image" />
+			        <img class="hidden w-3/4 max-w-md dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-showcase-dark.svg" alt="Product Image Dark Mode" />
+			      </div>
+			      
+			      <!-- Enhanced text readability -->
+			      <div class="mx-auto max-w-6xl space-y-10">
+					<!---
+			        <p class="text-lg font-bold text-gray-900 dark:text-white">Key Features and Benefits:</p>
+					-->
+					<ul class="list-outside list-disc space-y-6 pl-6 text-base font-normal text-gray-700 dark:text-gray-400">
+					  <li class="bg-gray-300 dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+					    <span class="block text-lg font-bold text-gray-900 dark:text-white">Cloud-Based Contact Storage:</span>
+					    <p class="mt-2 text-gray-700 dark:text-gray-300">
+					      Contacts.io offers a secure cloud-based platform where users can store all their contacts. This means that contacts are not tied to a specific device and can be accessed from anywhere, ensuring that users can manage their contacts on the go, whether they’re using a computer, tablet, or smartphone.
+					    </p>
+					  </li>
+					  <li class="bg-gray-300 dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+					    <span class="block text-lg font-bold text-gray-900 dark:text-white">User Authentication and Security:</span>
+					    <p class="mt-2 text-gray-700 dark:text-gray-300">
+					      The application implements robust user authentication mechanisms, including email verification, to ensure that only authorized users have access to their contact data. This protects user data from unauthorized access and potential breaches.
+					    </p>
+					  </li>
+					  <li class="bg-gray-300 dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+					    <span class="block text-lg font-bold text-gray-900 dark:text-white">Search and Filter Contacts:</span>
+					    <p class="mt-2 text-gray-700 dark:text-gray-300">
+					      Users can easily search and filter their contacts based on various criteria such as name, email, phone number, or custom tags. This feature is particularly useful for users with large contact lists, enabling them to quickly find the information they need without scrolling through the entire list.
+					    </p>
+					  </li>
+					</ul>
+
+			      </div>
+			    </div>
+			  </div>
+			</section>
+
+			
+		</div>
+		<script>
+			console.log("about page");
+		</script>
+				</body>		
+
+							
+			</html>

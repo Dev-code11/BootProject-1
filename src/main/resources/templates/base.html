@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="light"
+th:fragment="parent(content,title,script)" 
+  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<title th:replace="${title}">
+			"SCM"
+			</title>
+			<!--Flowbite link-->
+			<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"  rel="stylesheet" />
+
+			
+			<!--tailwind Css link-->
+			<link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+			<link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
+			<!--font awesome link-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+			
+		</head>
+		<body class="dark:bg-gray-900 bg-gray-200 dark:text-white">
+		
+			<!--Common header-->
+			<!--  user is logged in : navbar -->
+			   <div th:if="${loggedInUser}">
+			     <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+			   </div>
+			
+			   <!-- user is not logged : navbar -->
+			      <div th:unless="${loggedInUser}">
+			        <div data-th-replace="~{navbar :: navbar}"></div>
+			      </div>
+			<div>
+				
+			
+			<!--
+			<h1>This is base page but /base is not actually fired</h1>
+			<h1>The whole base page is actually a fragment that </h1>
+			<h1>is being used by about,services,hom page.</h1>
+			-->
+			<!-- Main Content -->
+			   <main class="flex-grow">
+			       <section th:replace="${content}"></section>
+			   </main>
+			   
+			   <!-- Footer -->
+			 
+			
+		<!--flowbite javascript link-->
+				<script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+				<!--static js file-->
+				<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+				<script data-th-src="@{'/js/script.js'}"></script>
+				
+				
+				
+				<th:block data-th-replace="${script}"></th:block>
+
+</div>
+				</body>		
+				<!--
+				<div data-th-replace="~{footer :: footer}"></div>
+				-->		
+			</html>

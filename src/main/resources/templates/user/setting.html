@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+	<title data-th-text="${loggedInUser.name}+' |  SCM'">Profile Page</title>
+  </head>
+  <body>
+    <div id="content">
+		<!-- sidebar -->
+
+				        <!-- user is logged in : sidebar -->
+
+		
+		<div th:if="${loggedInUser}">
+		         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+		       </div>
+
+			
+			   <!-- Main Content -->
+			          <div class="sm:pl-64 pt-15" style="height: 1000px">
+			              <div class="flex items-center justify-center md:pt-32 flex-col">
+							<div data-th-replace="message::messagebox"></div>
+
+			                  <!-- Welcome Message -->
+			                  <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-3xl w-full mb-12">
+			                      <div class="text-center mb-8">
+			                          <h1 class="text-4xl font-bold text-gray-800 dark:text-white">
+			                              Welcome, <span data-th-text="${loggedInUser.name}"></span>!
+			                          </h1>
+			                          <p class="text-lg text-gray-600 dark:text-gray-300">
+			                              Manage your account settings below.
+			                          </p>
+			                      </div>
+								  <!-- Change Username Form -->
+								                     <div class="mb-8">
+								                         <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Change Username</h2>
+								                         <form action="/user/update-username" method="POST">
+								                             <div class="mb-4">
+								                                 <label for="username" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">New Username</label>
+								                                 <input type="text" id="username" name="username" class="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Enter new username" required>
+								                             </div>
+								                             <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+								                                 Update Username
+								                             </button>
+								                         </form>
+								                     </div>
+
+								                     <!-- Change Password Form 
+														
+								                     <div>
+								                         <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Change Password</h2>
+								                         <form action="/user/update-password" method="POST">
+								                             <div class="mb-4">
+								                                 <label for="current-password" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">Current Password</label>
+								                                 <input type="password" id="current-password" name="current-password" class="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Enter current password" required>
+								                             </div>
+															 -->
+															 
+															 <div>
+															     <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Change Password</h2>
+															     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Google-Git verified users can ignore this field.</p>
+															     <form action="/user/update-password" method="POST">
+															         <div class="mb-4">
+															             <label for="current-password" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">Current Password</label>
+															             <input type="password" id="current-password" name="current-password" class="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Enter current password" required>
+															         </div>
+															 
+															 
+								                             <div class="mb-4">
+								                                 <label for="new-password" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">New Password</label>
+								                                 <input type="password" id="new-password" name="new-password" class="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Enter new password" required>
+								                             </div>
+								                            
+								                             <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+								                                 Change Password
+								                             </button>
+								                         </form>
+								                     </div>
+								                 </div>
+								             </div>
+	            
+        
+	</div>
+   
+    </div>
+	</div>
+
+
+	
+	
+    <script>
+      console.log("this is profile page");
+    </script>
+  </body>
+</html>
